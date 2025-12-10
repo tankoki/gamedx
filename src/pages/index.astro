@@ -1,16 +1,21 @@
 ---
-
+import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Offers from '../components/Offers.astro';
+import Testimonials from '../components/Testimonials.astro';
+import HeroFooter from '../components/HeroFooter.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Astraeus Gym">
+	<main>
+		<!-- Add Call To action, company Name and Button text2 -->
+	<Hero callToAction='更简 更新 更好玩', buttonText='立刻了解' companyName='GAMEDX'/>
+	<About linkText="/" imageOne='gym-instructor.jpg', imageTwo='gym-femaleinstructor.jpg' />
+	<Offers />
+	<Testimonials />
+	<HeroFooter callToAction='Get in Touch Today' />
+	</main>
+</Layout>
+

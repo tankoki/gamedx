@@ -1,19 +1,28 @@
-# Astro Starter Kit: Minimal
+# Fitness Astro Template
 
-```sh
-npm create astro@latest -- --template minimal
-```
+[Youtube Tutorial - Canva to Astro 4.0: Fitness Website](https://youtube.com/playlist?list=PLP5oBhNCHQF1VsRCSTpug63AYymmEvYpM&si=Y4A9d0PsXsRi-FlQ)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[Live Preview](https://fitness-astro-template.netlify.app/)
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of this Fitness Astro Template, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
+│   └── favicon.svg
 ├── src/
+│   ├── components/
+│   │   └── About.astro
+|   |   └── Card.astro -- not used
+|   |   └── Hero.astro
+|   |   └── HeroFooter.astro
+|   |   └── ImageCard.astro
+|   |   └── Offers.astro
+|   |   └── Testimonials.astro
+│   ├── layouts/
+│   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
 └── package.json
@@ -36,8 +45,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| `npm run astro -- --help` | Get help using the Astro CLI                     |).

@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  linkText: string;
+  imageOne:string;
+  imageTwo:string;
+}
+const { linkText, imageOne, imageTwo } = Astro.props;
+---
+
+<section class="py-12">
+  <div class="grid grid-cols-2 p-4">
+    <div>
+      <h1 class="text-white text-5xl italic max-w-xs yellowText pb-8">关于我们</h1>
+      <p class="text-white max-w-sm">
+        gamedx从2014年创立，自那时起，我们已经成为行业内电子套件的供应商
+      </p>
+      <p class="text-white mt-8 underline">
+        <a href={linkText}>查看更多</a>
+      </p>
+    </div>
+    <div class="grid grid-cols-2">
+        <Image src={'/images/'+imageOne} 
+        width={600} 
+        height={600/1.5} 
+        alt="最新游戏" 
+        class="rounded-md object-cover w-48"/>
+        <Image src={'/images/'+imageTwo}
+         width={600} height={600/1.5} alt="最新游戏2" class="rounded-md object-cover w-48 pt-8"/>
+    </div>
+  </div>
+</section>
