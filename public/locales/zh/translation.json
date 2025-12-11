@@ -1,0 +1,27 @@
+{
+  "site": {
+    "title": "Astraeus Gym - GAMEDX"
+  },
+  "hero": {
+    "callToAction": "更简 更新 更好玩",
+    "buttonText": "立刻了解",
+    "companyName": "GAMEDX"
+  },
+  "footer": {
+    "callToAction": "立即联系我们",
+    "addressHeading": "邮寄地址",
+    "addressInfo": "123 任意街道, 任意城市, ST 34565",
+    "emailHeading": "电子邮件",
+    "emailInfo": "hello@reallygreatsite.com",
+    "phoneHeading": "电话号码",
+    "phoneInfo": "(123) 456-7890"
+  },
+  "about": {
+    "title": "关于我们",
+    "paragraphOne": "gamedx从2014年创立，自那时起，我们已经成为行业内电子套件的供应商。",
+    "paragraphTwo": "这里是第二段关于产品或服务的详细说明。",
+    "linkText": "查看更多",
+    "imageOneAlt": "最新游戏",
+    "imageTwoAlt": "最新游戏2"
+  }
+}

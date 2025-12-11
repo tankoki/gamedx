@@ -1,46 +1,53 @@
 ---
-interface Props {
-  callToAction: string;
-}
+// HeroFooter.astro - 🏆 最终修复：使用自定义 i18n 工具
 
-const { callToAction } = Astro.props;
+import { getT } from '../utils/i18n';
+
+// 1. 从 Astro 内置 i18n 获取当前语言
+const currentLocale = Astro.currentLocale as 'zh' | 'en' || 'zh';
+
+// 2. 获取自定义的翻译函数 t()
+const t = getT(currentLocale); 
+
 const imageURL = "gym-ropes.jpg";
 const bgStyle = { backgroundImage: `url('/images/${imageURL}')` };
+
+// 定义内容数组，使用翻译键
 const content = [
-  {
-    heading: "Mailing Address",
-    info: "123 Anywhere St, Any City, ST 34565",
-  },
-  {
-    heading: "Email Address",
-    info: "hello@reallygreatsite.com",
-  },
-  {
-    heading: "Phone Number",
-    info: "(123) 456-7890",
-  },
+  {
+    headingKey: "footer.addressHeading",
+    infoKey: "footer.addressInfo",
+  },
+  {
+    headingKey: "footer.emailHeading",
+    infoKey: "footer.emailInfo",
+  },
+  {
+    headingKey: "footer.phoneHeading",
+    infoKey: "footer.phoneInfo",
+  },
 ];
 ---
 
 <footer
-  class="bg-cover bg-no-repeat bg-gray-700 bg-blend-multiply"
-  style={bgStyle}
+  class="bg-cover bg-no-repeat bg-gray-700 bg-blend-multiply"
+  style={bgStyle}
 >
-  <div class="mx-auto max-w-screen-xl">
-    <h1
-      class="font-extrabold text-5xl yellowText tracking-wide uppercase italic p-36 max-w-xl"
-    >
-      {callToAction}
-    </h1>
-    <div class="yellowBG grid grid-cols-1 md:grid-cols-3">
-      {
-        content.map((item) => (
-          <div class="p-12">
-            <h1 class="uppercase text-2xl italic">{item.heading}</h1>
-            <p>{item.info}</p>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+  <div class="mx-auto max-w-screen-xl">
+    <h1
+      class="font-extrabold text-5xl yellowText tracking-wide uppercase italic p-36 max-w-xl"
+    >
+                {t('footer.callToAction')}
+    </h1>
+    <div class="yellowBG grid grid-cols-1 md:grid-cols-3">
+      {
+        content.map((item) => (
+          <div class="p-12">
+                            <h1 class="uppercase text-2xl italic">{t(item.headingKey)}</h1>
+            <p>{t(item.infoKey)}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </footer>

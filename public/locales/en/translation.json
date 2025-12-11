@@ -1,0 +1,27 @@
+{
+  "site": {
+    "title": "Astraeus Gym - GAMEDX"
+  },
+  "hero": {
+    "callToAction": "Simpler, Newer, More Fun",
+    "buttonText": "Learn Now",
+    "companyName": "GAMEDX"
+  },
+  "footer": {
+    "callToAction": "Get in Touch Today",
+    "addressHeading": "Mailing Address",
+    "addressInfo": "123 Anywhere St, Any City, ST 34565",
+    "emailHeading": "Email Address",
+    "emailInfo": "hello@reallygreatsite.com",
+    "phoneHeading": "Phone Number",
+    "phoneInfo": "(123) 456-7890"
+  },
+  "about": {
+    "title": "About Us",
+    "paragraphOne": "Founded in 2014, GAMEDX has since become a leading supplier of electronic kits in the industry.",
+    "paragraphTwo": "This is the second paragraph detailing our product or service offerings.",
+    "linkText": "View More",
+    "imageOneAlt": "Latest Game",
+    "imageTwoAlt": "Latest Game 2"
+  }
+}

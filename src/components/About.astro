@@ -1,33 +1,55 @@
 ---
+// About.astro - 🏆 最终修复：图片在 public 文件夹，必须手动提供 width/height
+
+import { getT } from '../utils/i18n.js';
 import { Image } from 'astro:assets';
 
+const currentLocale = Astro.currentLocale as 'zh' | 'en' || 'zh';
+const t = getT(currentLocale); 
+
 interface Props {
-  linkText: string;
-  imageOne:string;
-  imageTwo:string;
+  linkText: string; 
+  // ⚠️ Props 恢复为接收字符串 URL 路径
+  imageOne: string; 
+  imageTwo: string;
 }
+
 const { linkText, imageOne, imageTwo } = Astro.props;
+
+// 显式定义图片尺寸，因为图片在 /public 中
+const IMAGE_WIDTH = 600;
+const IMAGE_HEIGHT = 400; 
 ---
 
 <section class="py-12">
-  <div class="grid grid-cols-2 p-4">
-    <div>
-      <h1 class="font-extrabold text-white text-4xl italic max-w-xs yellowText pb-8">关于我们</h1>
-      <p class="text-white max-w-sm">
-        gamedx从2014年创立，自那时起，我们已经成为行业内电子套件的供应商
-      </p>
-      <p class="text-white mt-8 underline">
-        <a href={linkText}>查看更多</a>
-      </p>
-    </div>
-    <div class="grid grid-cols-2">
-        <Image src={'/images/'+imageOne} 
-        width={600} 
-        height={600/1.5} 
-        alt="最新游戏" 
-        class="rounded-md object-cover w-48"/>
-        <Image src={'/images/'+imageTwo}
-         width={600} height={600/1.5} alt="最新游戏2" class="rounded-md object-cover w-48 pt-8"/>
-    </div>
-  </div>
+  <div class="grid grid-cols-2 p-4">
+    <div>
+              <h1 class="font-extrabold text-white text-4xl italic max-w-xs yellowText pb-8">{t('about.title')}</h1>
+        
+              <p class="text-white max-w-sm">
+        {t('about.paragraphOne')}
+      </p>
+        
+              <p class="text-white mt-8 underline">
+        <a href={linkText}>{t('about.linkText')}</a> 
+      </p>
+    </div>
+    <div class="grid grid-cols-2">
+        <Image 
+            // ⚠️ 引用 /public 文件夹中的图片时，路径必须以 / 开头
+            src={'/images/'+imageOne}  
+            width={IMAGE_WIDTH}  // 必须提供的属性
+            height={IMAGE_HEIGHT}  // 必须提供的属性
+            alt={t('about.imageOneAlt')} 
+            class="rounded-md object-cover w-48"
+        />
+        <Image 
+            src={'/images/'+imageTwo} // ⚠️ 路径以 / 开头
+            width={IMAGE_WIDTH}  // 必须提供的属性
+            height={IMAGE_HEIGHT}  // 必须提供的属性
+            alt={t('about.imageTwoAlt')} 
+            class="rounded-md object-cover w-48 pt-8"
+        />
+    </div>
+  </div>
 </section>

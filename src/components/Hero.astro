@@ -1,28 +1,50 @@
 ---
-interface Props {
-  callToAction: string;
-  buttonText: string;
-  companyName:string;
-  //    logoImage:string;
-}
-const { callToAction, buttonText, companyName } = Astro.props;
+// Hero.astro - 🏆 最终修复：增加 Logo 并使用 Flexbox 布局
 
-const imageURL = "gamedx-hero-bg.jpg"
+import { getT } from '../utils/i18n';
+
+// 1. 从 Astro 内置 i18n 获取当前语言
+const currentLocale = Astro.currentLocale as 'zh' | 'en' || 'zh';
+
+// 2. 获取自定义的翻译函数 t()
+const t = getT(currentLocale); 
+
+const imageURL = "gamedx-hero-bg.jpg";
 const bgStyle = {
   backgroundImage: `url('/images/${imageURL}')`,
 };
+
+// 🎯 Logo 的 URL 路径
+const logoURL = '/images/logo120120.png';
 ---
 
 <header class="bg-cover bg-no-repeat bg-gray-400 bg-blend-multiply" style={bgStyle}>
   <nav class="text-white uppercase pt-8 p-4 font-bold2">
-    <ul>
-      <li>{companyName}</li>
-    </ul>
+    <div class="flex items-center space-x-3"> 
+        
+        <a href="/"> {/* 通常 Logo 会链接到主页 */}
+            <img 
+                src={logoURL}
+                alt={t('hero.companyName') + ' Logo'} 
+                class="h-10 w-auto"  
+            />
+        </a>
+
+        <ul class="list-none p-0 m-0">
+            <li class="text-white uppercase font-bold2">
+                {t('hero.companyName')}
+            </li>
+        </ul>
+    </div>
   </nav>
-  <div class="px-4 mx-auto max-w-screen-xl text-center py-36 text-white">
   
-      <h1 class="font-extrabold text-7xl tracking-wide mb-4 uppercase italic">{callToAction}</h1>
-      <button class="yellowBG p-2 uppercase text-black font-bold">{buttonText}</button>
+  <div class="px-4 mx-auto max-w-screen-xl text-center py-36 text-white">
+    
+    <h1 class="font-extrabold text-6xl md:text-7xl tracking-wide mb-4 uppercase italic">
+        {t('hero.callToAction')}
+    </h1>
+    
+    <button class="yellowBG p-2 uppercase text-black font-bold">{t('hero.buttonText')}</button>
 
   </div>
 </header>

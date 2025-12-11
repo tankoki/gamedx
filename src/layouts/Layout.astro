@@ -1,13 +1,50 @@
 ---
+// Layout.astro - 语言切换逻辑已优化，无需修改
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+
+// 🏆 最终修复方案：手动构造语言切换 URL
+// 1. 获取当前语言
+const currentLocale = Astro.currentLocale || 'zh';
+
+// 2. 使用 Astro.url.pathname 手动构造切换 URL
+const currentUrl = Astro.url;
+
+const getSwitchUrl = (targetLocale: 'zh' | 'en'): string => {
+    let newPath = currentUrl.pathname;
+    
+    // 移除当前语言前缀（如果存在）
+    if (currentLocale !== 'zh' && newPath.startsWith(`/${currentLocale}`)) {
+        newPath = newPath.replace(`/${currentLocale}`, '');
+    }
+    
+    if (newPath === '') {
+        newPath = '/';
+    }
+
+    // 添加目标语言前缀（如果目标不是默认语言 'zh'）
+    if (targetLocale !== 'zh') {
+        // 确保路径不重复斜杠，例如 /en/about
+        return `/${targetLocale}${newPath === '/' ? '' : newPath}`;
+    } else {
+        // 如果目标是默认语言 (zh)，则不加前缀
+        return newPath;
+    }
+};
+
+const zhUrlPath = getSwitchUrl('zh');
+const enUrlPath = getSwitchUrl('en');
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}> 
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -20,6 +57,12 @@ const { title } = Astro.props;
 
 	</head>
 	<body>
+        <LanguageSwitcher 
+            currentLocale={currentLocale} 
+            zhUrl={zhUrlPath} 
+            enUrl={enUrlPath} 
+        />
+        
 		<slot />
 	</body>
 </html>

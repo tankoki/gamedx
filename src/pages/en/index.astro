@@ -1,0 +1,36 @@
+---
+// /src/pages/en/index.astro (英文主页 - 路径已修复)
+
+// ⚠️ 注意：所有导入路径都从 '../' 变成了 '../../'
+import Card from '../../components/Card.astro';
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Offers from '../../components/Offers.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import HeroFooter from '../../components/HeroFooter.astro';
+
+// 图片在 /public 中，无需导入
+// import gymInstructor from '../images/gym-instructor.jpg'; 
+// import gymFemaleInstructor from '../images/gym-femaleinstructor.jpg'; 
+
+// 不需要导入翻译函数 t，因为页面组件本身不直接使用翻译文本。
+---
+
+<Layout title="Astraeus Gym">
+	<main>
+		<Hero /> 
+    
+    {/* 传递字符串 URL 路径 */}
+    <About 
+        linkText="/en"
+        imageOne='gym-instructor.jpg' 
+        imageTwo='gym-femaleinstructor.jpg' 
+    />
+    
+	<Offers />
+	<Testimonials />
+    
+	<HeroFooter />
+	</main>
+</Layout>

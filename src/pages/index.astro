@@ -1,21 +1,35 @@
 ---
-import Card from '../components/Card.astro';
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Offers from '../components/Offers.astro';
-import Testimonials from '../components/Testimonials.astro';
-import HeroFooter from '../components/HeroFooter.astro';
+// /src/pages/index.astro (中文主页 - 路径已恢复为 SSG 文件系统路由)
+
+import Card from '../components/Card.astro';         // <-- 路径已修复
+import Layout from '../layouts/Layout.astro';       // <-- 路径已修复
+import Hero from '../components/Hero.astro';         // <-- 路径已修复
+import About from '../components/About.astro';       // <-- 路径已修复
+import Offers from '../components/Offers.astro';     // <-- 路径已修复
+import Testimonials from '../components/Testimonials.astro'; // <-- 路径已修复
+import HeroFooter from '../components/HeroFooter.astro'; // <-- 路径已修复
+
+// 图片在 /public 中，无需导入，保持注释或删除
+// import gymInstructor from '../images/gym-instructor.jpg'; 
+// import gymFemaleInstructor from '../images/gym-femaleinstructor.jpg'; 
+
+// 不需要导入翻译函数 t，因为页面组件本身不直接使用翻译文本。
 ---
 
 <Layout title="Astraeus Gym">
 	<main>
-		<!-- Add Call To action, company Name and Button text2 -->
-	<Hero callToAction='更简 更新 更好玩', buttonText='立刻了解' companyName='GAMEDX'/>
-	<About linkText="/" imageOne='gym-instructor.jpg', imageTwo='gym-femaleinstructor.jpg' />
+		<Hero /> 
+    
+    {/* 传递字符串 URL 路径 */}
+    <About 
+        linkText="/"
+        imageOne='gym-instructor.jpg' 
+        imageTwo='gym-femaleinstructor.jpg' 
+    />
+    
 	<Offers />
 	<Testimonials />
-	<HeroFooter callToAction='Get in Touch Today' />
+    
+	<HeroFooter />
 	</main>
 </Layout>
-

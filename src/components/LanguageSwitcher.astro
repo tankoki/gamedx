@@ -1,0 +1,39 @@
+---
+// LanguageSwitcher.astro - 哑组件
+
+interface Props {
+    currentLocale: string;
+    zhUrl: string;
+    enUrl: string;
+}
+
+const { currentLocale, zhUrl, enUrl } = Astro.props;
+---
+
+<div class="language-switcher absolute top-0 right-0 p-4">
+    <a 
+        href={zhUrl} 
+        class:list={[
+            'mx-2 p-1 text-sm font-bold',
+            {'text-yellow-400 border-b-2 border-yellow-400': currentLocale === 'zh'},
+            {'text-white hover:text-gray-300': currentLocale !== 'zh'}
+        ]}
+        aria-current={currentLocale === 'zh' ? 'page' : false}
+    >
+        中文
+    </a>
+
+    |
+
+    <a 
+        href={enUrl} 
+        class:list={[
+            'mx-2 p-1 text-sm font-bold',
+            {'text-yellow-400 border-b-2 border-yellow-400': currentLocale === 'en'},
+            {'text-white hover:text-gray-300': currentLocale !== 'en'}
+        ]}
+        aria-current={currentLocale === 'en' ? 'page' : false}
+    >
+        EN
+    </a>
+</div>
